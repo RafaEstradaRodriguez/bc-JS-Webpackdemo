@@ -1,9 +1,11 @@
 'use strict';
 
-(function (window, $) {
+const Helper = require('./TodoHelper');
+
+(function (window, $, swal) {
 
     class TodoApp {
-        constructor(wrapper, swal) {
+        constructor(wrapper) {
             this.wrapper = wrapper;
             this.items = [];
             this.helper = new Helper(this.items);
@@ -67,18 +69,6 @@
             const htmlFila = rowTemplate(item);
             const fila = $.parseHTML(htmlFila);
             this.wrapper.find('tbody').append(fila);
-        }
-    }
-
-    class Helper {
-        constructor(items) {
-            this.items = items;
-        }
-
-        getTotalItems() {
-            return this.items.reduce((sum, val) => {
-                return sum + val.cantidad;
-            }, 0);
         }
     }
 
