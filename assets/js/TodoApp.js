@@ -1,8 +1,10 @@
 'use strict';
 
 const Helper = require('./TodoHelper');
+const $ = require('jquery');
+const swal = require('sweetalert2');
 
-(function (window, $, swal) {
+(function (window) {
 
     class TodoApp {
         constructor(wrapper) {
@@ -80,4 +82,4 @@ const Helper = require('./TodoHelper');
 </tr>`;
 
     window.TodoApp = TodoApp;
-})(window, jQuery, swal);
+})(window);
