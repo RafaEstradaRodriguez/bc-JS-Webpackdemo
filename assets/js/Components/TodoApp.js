@@ -4,9 +4,7 @@ const Helper = require('./TodoHelper');
 const $ = require('jquery');
 const swal = require('sweetalert2');
 
-(function (window) {
-
-    class TodoApp {
+class TodoApp {
         constructor(wrapper) {
             this.wrapper = wrapper;
             this.items = [];
@@ -69,17 +67,17 @@ const swal = require('sweetalert2');
 
         appendItemInTable(item) {
             const htmlFila = rowTemplate(item);
-            const fila = $.parseHTML(htmlFila);
+            const fila = $($.parseHTML(htmlFila));
+            fila.data('key', this.items.length -1);
             this.wrapper.find('tbody').append(fila);
         }
     }
 
-    const rowTemplate = (item) => `
+const rowTemplate = (item) => `
 <tr>
     <td>${item.name}</td>
     <td>${item.cantidad}</td>
     <td><a href="#" class="js-delete-item"><span class="fa fa-trash"></span></a></td>
 </tr>`;
 
-    window.TodoApp = TodoApp;
-})(window);
+module.exports = TodoApp;
