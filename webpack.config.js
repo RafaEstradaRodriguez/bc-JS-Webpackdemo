@@ -8,6 +8,28 @@ module.exports = {
         filename: "todo.js"
     },
     mode: "development",
+    devServer: {
+        contentBase: './dist'
+    },
+    module: {
+        rules: [
+            {
+                test: /.*\.(gif|png|jpe?g|svg)$/i,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: '/images/[name]_[hash:7].[ext]',
+                        }
+                    },
+                ]
+            },
+            {
+                test: /\.css$/,
+                use: ['style-loader','css-loader' ]
+            }
+        ]
+    },
     plugins: [
         new WebpackNotifierPlugin()
     ],
